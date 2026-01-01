@@ -1,0 +1,115 @@
+<div class="app-container">
+  <nav class="tab-nav">
+    <button (click)="setActiveTab('clock')" [class.active]="activeTab === 'clock'">Clock</button>
+    <button (click)="setActiveTab('timer')" [class.active]="activeTab === 'timer'">Timer</button>
+    <button (click)="setActiveTab('stopwatch')" [class.active]="activeTab === 'stopwatch'">Stopwatch</button>
+    <button (click)="setActiveTab('pomodoro')" [class.active]="activeTab === 'pomodoro'">Pomodoro</button>
+  </nav>
+
+  <!-- Clock Tab -->
+  <div *ngIf="activeTab === 'clock'" class="tab-content clock-tab" [class.day-theme]="isDayTime" [class.night-theme]="!isDayTime">
+    <div class="quote-section">
+      <div class="daily-quote">{{ dailyQuote }}</div>
+    </div>
+    <div class="main-display">
+      <div class="clock-container">
+        <div class="analog-clock" [class.day-theme]="isDayTime" [class.night-theme]="!isDayTime">
+          <div class="clock-face">
+            <div class="hour-hand" [style.transform]="'rotate(' + hourAngle + 'deg)'">
+              <div class="hand"></div>
+            </div>
+            <div class="minute-hand" [style.transform]="'rotate(' + minuteAngle + 'deg)'">
+              <div class="hand"></div>
+            </div>
+            <div class="second-hand" [style.transform]="'rotate(' + secondAngle + 'deg)'">
+              <div class="hand"></div>
+            </div>
+            <div class="center-dot"></div>
+          </div>
+        </div>
+        <div class="clock-display" [class.day-theme]="isDayTime" [class.night-theme]="!isDayTime">
+          <div class="sky-icon">{{ isDayTime ? '☀️' : '🌙' }}</div>
+          <div class="current-time">{{ currentTime }}</div>
+          <div class="current-date">{{ currentDate }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="greeting-section">
+      <h2>{{ greeting }}</h2>
+    </div>
+  </div>
+
+  <!-- Timer Tab -->
+  <div *ngIf="activeTab === 'timer'" class="tab-content">
+    <h1>Countdown Timer</h1>
+    <div class="main-display">
+      <div class="timer-display">
+        <div class="time">{{ formatTime(timerSeconds) }}</div>
+      </div>
+    </div>
+    <div class="timer-inputs">
+      <input type="number" [value]="timerMinutes" (input)="onTimerMinutesChange($event)" min="0" max="59" placeholder="Min">
+      <span>:</span>
+      <input type="number" [value]="timerSecondsInput" (input)="onTimerSecondsChange($event)" min="0" max="59" placeholder="Sec">
+    </div>
+    <div class="controls">
+      <button (click)="startTimer()" [disabled]="timerRunning">Start</button>
+      <button (click)="pauseTimer()" [disabled]="!timerRunning">Pause</button>
+      <button (click)="resetTimer()">Reset</button>
+    </div>
+  </div>
+
+  <!-- Stopwatch Tab -->
+  <div *ngIf="activeTab === 'stopwatch'" class="tab-content">
+    <h1>Stopwatch</h1>
+    <div class="main-display">
+      <div class="timer-display">
+        <div class="time">{{ formatStopwatchTime(stopwatchTime) }}</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button (click)="startStopwatch()" [disabled]="stopwatchRunning">Start</button>
+      <button (click)="pauseStopwatch()" [disabled]="!stopwatchRunning">Pause</button>
+      <button (click)="resetStopwatch()">Reset</button>
+      <button (click)="lapStopwatch()" [disabled]="!stopwatchRunning">Lap</button>
+    </div>
+    <div *ngIf="laps.length > 0" class="secondary-content">
+      <div class="laps">
+        <h3>Laps</h3>
+        <div *ngFor="let lap of laps; let i = index" class="lap">
+          Lap {{ i + 1 }}: {{ formatStopwatchTime(lap) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pomodoro Tab -->
+  <div *ngIf="activeTab === 'pomodoro'" class="tab-content">
+    <h1>Pomodoro Timer</h1>
+    <div class="main-display">
+      <div class="timer-display">
+        <div class="time">{{ formatTime(timeLeft) }}</div>
+        <div class="session-type">{{ currentSession }}</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button (click)="toggleTimer()" [class.active]="isRunning">
+        {{ isRunning ? 'Pause' : 'Start' }}
+      </button>
+      <button (click)="resetPomodoroTimer()">Reset</button>
+    </div>
+    
+    <div class="secondary-content">
+      <div class="pomodoro-settings">
+        <div class="setting">
+          <label>Work (min)</label>
+          <input type="number" [value]="workMinutes" (input)="onWorkChange($event)" min="1" max="120">
+        </div>
+        <div class="setting">
+          <label>Break (min)</label>
+          <input type="number" [value]="breakMinutes" (input)="onBreakChange($event)" min="1" max="60">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

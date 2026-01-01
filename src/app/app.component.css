@@ -1,0 +1,466 @@
+.app-container {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: clamp(24px, 5vw, 40px);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+  border: 2px solid #e5e5e5;
+  width: 700px;
+  min-width: 700px;
+  max-width: 700px;
+}
+
+.tab-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  background: #f0f0f0;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.tab-nav button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 12px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+}
+
+.tab-nav button.active {
+  background: #000000;
+  color: #ffffff;
+}
+
+.tab-nav button:hover:not(.active) {
+  background: #e0e0e0;
+}
+
+.tab-content {
+  text-align: center;
+  min-height: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-display {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  min-height: 50px;
+  align-items: center;
+}
+
+.secondary-content {
+  margin-top: auto;
+}
+
+h1 {
+  color: #000000;
+  margin-bottom: clamp(20px, 4vw, 32px);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+}
+
+.timer-display {
+  padding: clamp(24px, 5vw, 40px);
+  background: #000000;
+  border-radius: 12px;
+  color: #ffffff;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.time, .current-time {
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.session-type, .current-date {
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.timer-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.timer-inputs input {
+  width: 60px;
+  padding: 8px;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.timer-inputs span {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: clamp(20px, 4vw, 32px);
+  flex-wrap: wrap;
+}
+
+.controls button {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  padding: clamp(10px, 2.5vw, 12px) clamp(16px, 4vw, 20px);
+  border-radius: 8px;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.controls button:hover:not(:disabled) {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-1px);
+}
+
+.controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.controls button.active {
+  background: #ffffff;
+  color: #000000;
+}
+
+.laps {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.lap {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-family: 'Courier New', monospace;
+}
+
+.lap:last-child {
+  border-bottom: none;
+}
+
+.pomodoro-settings {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pomodoro-settings .setting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.pomodoro-settings .setting label {
+  font-weight: 600;
+  color: #000000;
+  font-size: 0.9rem;
+}
+
+.pomodoro-settings .setting input {
+  width: 80px;
+  padding: 8px 12px;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  background: #ffffff;
+}
+
+.pomodoro-settings .setting input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 720px) {
+  .app-container {
+    width: 100%;
+    min-width: 320px;
+    max-width: 100%;
+  }
+  
+  .tab-content {
+    height: auto;
+    min-height: 400px;
+  }
+}
+
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .clock-container {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+.analog-clock {
+  flex-shrink: 0;
+  transition: all 0.5s ease;
+}
+
+.analog-clock.day-theme .clock-face {
+  background: linear-gradient(135deg, #87CEEB 0%, #98D8E8 50%, #F0F8FF 100%);
+  border: 4px solid #2C3E50;
+}
+
+.analog-clock.night-theme .clock-face {
+  background: linear-gradient(135deg, #2C3E50 0%, #34495E 50%, #1A252F 100%);
+  border: 4px solid #ECF0F1;
+}
+
+.analog-clock.day-theme .hand {
+  background: #2C3E50;
+}
+
+.analog-clock.night-theme .hand {
+  background: #ECF0F1;
+}
+
+.analog-clock.day-theme .center-dot {
+  background: #2C3E50;
+}
+
+.analog-clock.night-theme .center-dot {
+  background: #ECF0F1;
+}
+
+.analog-clock.day-theme .second-hand .hand {
+  background: #E74C3C;
+}
+
+.analog-clock.night-theme .second-hand .hand {
+  background: #E74C3C;
+}
+
+.clock-display {
+  flex: 1;
+  min-width: 200px;
+  padding: clamp(20px, 4vw, 32px);
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.clock-display.day-theme {
+  background: linear-gradient(135deg, #87CEEB 0%, #98D8E8 50%, #F0F8FF 100%);
+  color: #2C3E50;
+}
+
+.clock-display.night-theme {
+  background: linear-gradient(135deg, #2C3E50 0%, #34495E 50%, #1A252F 100%);
+  color: #ECF0F1;
+}
+
+.sky-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.current-time {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.current-date {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+
+
+.clock-face {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.hour-hand, .minute-hand, .second-hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+}
+
+.hour-hand .hand {
+  width: 4px;
+  height: 60px;
+  margin-left: -2px;
+  margin-top: -60px;
+  border-radius: 2px;
+  transition: background 0.5s ease;
+}
+
+.minute-hand .hand {
+  width: 3px;
+  height: 80px;
+  margin-left: -1.5px;
+  margin-top: -80px;
+  border-radius: 1.5px;
+  transition: background 0.5s ease;
+}
+
+.second-hand .hand {
+  width: 1px;
+  height: 90px;
+  margin-left: -0.5px;
+  margin-top: -90px;
+  transition: background 0.5s ease;
+}
+
+.center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 0.5s ease;
+}
+
+.clock-face::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: #000000;
+  transform: translateX(-50%);
+}
+
+.clock-face::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: #000000;
+  transform: translateX(-50%);
+}
+
+.quote-section {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #000000;
+}
+
+.daily-quote {
+  font-style: italic;
+  color: #2c3e50;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  line-height: 1.4;
+  text-align: center;
+}
+
+.greeting-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.greeting-section h2 {
+  color: #000000;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: 600;
+  margin: 0;
+}
+
+.clock-tab {
+  transition: all 0.5s ease;
+  background: transparent;
+}
+
+.clock-tab.day-theme {
+  background: transparent;
+}
+
+.clock-tab.night-theme {
+  background: transparent;
+}
+
+.clock-tab.day-theme .quote-section {
+  background: rgba(255, 255, 255, 0.8);
+  border-left-color: #1976D2;
+}
+
+.clock-tab.night-theme .quote-section {
+  background: rgba(55, 71, 79, 0.8);
+  border-left-color: #64B5F6;
+}
+
+.clock-tab.day-theme .daily-quote {
+  color: #1565C0;
+}
+
+.clock-tab.night-theme .daily-quote {
+  color: #E3F2FD;
+}
+
+.clock-tab.day-theme .greeting-section h2 {
+  color: #1565C0;
+}
+
+.clock-tab.night-theme .greeting-section h2 {
+  color: #E3F2FD;
+}
