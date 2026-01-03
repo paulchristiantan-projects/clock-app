@@ -146,13 +146,13 @@ export class AppComponent implements OnDestroy {
     // Update greeting based on time
     const currentHour = now.getHours();
     if (currentHour >= 5 && currentHour < 12) {
-      this.greeting = 'Good Morning, Paul';
+      this.greeting = 'Good Morning, Paul!';
       this.isDayTime = true;
     } else if (currentHour >= 12 && currentHour < 18) {
-      this.greeting = 'Good Day, Paul';
+      this.greeting = 'Good Day, Paul!';
       this.isDayTime = true;
     } else {
-      this.greeting = 'Good Night, Paul';
+      this.greeting = 'Good Evening, Paul!';
       this.isDayTime = false;
     }
   }

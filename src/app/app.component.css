@@ -162,17 +162,27 @@ h1 {
 }
 
 .laps {
-  max-height: 200px;
+  max-height: clamp(150px, 30vh, 200px);
   overflow-y: auto;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 16px;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  .laps {
+    max-height: 120px;
+    padding: 12px;
+  }
 }
 
 .lap {
   padding: 8px 0;
   border-bottom: 1px solid #f0f0f0;
   font-family: 'Courier New', monospace;
+  color: #000000;
 }
 
 .lap:last-child {
@@ -415,7 +425,7 @@ h1 {
 }
 
 .greeting-section {
-  margin-top: 20px;
+  margin-top: 1rem;
   text-align: center;
 }
 
@@ -462,5 +472,5 @@ h1 {
 }
 
 .clock-tab.night-theme .greeting-section h2 {
-  color: #E3F2FD;
+  color: #1565C0;
 }
